@@ -634,21 +634,80 @@ body {
 
 /* 반응형 디자인 */
 @media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+    
     .game-container {
         max-width: 350px;
-        margin: 10px;
+        margin: 0;
+        min-height: 600px;
+        height: auto;
+        aspect-ratio: unset;
     }
     
     .scene {
         padding: 15px;
+        overflow: visible;
+        height: auto;
+        min-height: 580px;
     }
     
     .scene.active {
         padding: 20px 15px 15px 15px;
+        height: auto;
+        min-height: 580px;
     }
     
     .title h1 {
         font-size: 18px;
+        margin-bottom: 25px;
+    }
+    
+    .dice-preview-container {
+        height: 100px;
+        margin: 5px 0 10px 0;
+    }
+    
+    .dice-preview {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .dice-preview .dice-face {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .dice-preview .dice-face.front { transform: translateZ(40px); }
+    .dice-preview .dice-face.back { transform: rotateY(180deg) translateZ(40px); }
+    .dice-preview .dice-face.right { transform: rotateY(90deg) translateZ(40px); }
+    .dice-preview .dice-face.left { transform: rotateY(-90deg) translateZ(40px); }
+    .dice-preview .dice-face.top { transform: rotateX(90deg) translateZ(40px); }
+    .dice-preview .dice-face.bottom { transform: rotateX(-90deg) translateZ(40px); }
+    
+    .dice-preview .dot {
+        width: 12px;
+        height: 12px;
+        margin: 2px;
+    }
+    
+    .instruction {
+        margin-bottom: 15px;
+    }
+    
+    .instruction h3 {
+        font-size: 16px;
+        margin-top: 20px;
+        margin-bottom: 5px;
+    }
+    
+    .instruction p {
+        font-size: 12px;
+    }
+    
+    .number-selection {
+        margin-bottom: 15px;
     }
     
     .number-btn {
