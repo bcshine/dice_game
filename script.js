@@ -59,10 +59,22 @@ class DiceGame {
         const rollButton = document.getElementById('rollDiceBtn');
         rollButton.disabled = this.selectedNumbers.length !== 3;
         
-        // 디버깅용: 버튼을 강제로 표시
+        // 크롬 호환성을 위해 버튼을 강제로 표시
         rollButton.style.display = 'block';
         rollButton.style.visibility = 'visible';
         rollButton.style.opacity = '1';
+        rollButton.style.position = 'static';
+        rollButton.style.width = '100%';
+        rollButton.style.height = '45px';
+        rollButton.style.marginTop = '15px';
+        rollButton.style.marginBottom = '20px';
+        
+        // 브라우저별 처리
+        if (navigator.userAgent.includes('Chrome')) {
+            rollButton.style.transform = 'translateZ(0)'; // 하드웨어 가속
+            rollButton.style.backfaceVisibility = 'hidden';
+        }
+        
         console.log('버튼 상태:', rollButton.disabled ? '비활성화' : '활성화');
         console.log('선택된 숫자:', this.selectedNumbers);
     }
