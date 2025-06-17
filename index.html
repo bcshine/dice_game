@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>세개의 숫자를 맞춰라! 🎲</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game-container">
+        <!-- 장면 1: 숫자 선택 화면 -->
+        <div id="scene1" class="scene active">
+            <div class="title">
+                <h1>🎲 세개의 숫자를 맞춰라! 🎲</h1>
+            </div>
+            
+            <!-- 상단 주사위 미리보기 -->
+            <div class="dice-preview-container">
+                <div class="dice-preview" id="previewDice">
+                    <div class="dice-face front">
+                        <div class="dot"></div>
+                    </div>
+                    <div class="dice-face back">
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div>
+                    <div class="dice-face right">
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div>
+                    <div class="dice-face left">
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div>
+                    <div class="dice-face top">
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div>
+                    <div class="dice-face bottom">
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="instruction">
+                <h3>👉 음료수쿠폰 도전해보세요!</h3>
+                <p>선택한 3개 숫자와 같은 번호면 승리!</p>
+            </div>
+
+            <div class="number-selection">
+                <div class="selected-count">선택: <span id="selectedCount">0</span>/3</div>
+                <div class="number-buttons">
+                    <button class="number-btn" data-number="1">1</button>
+                    <button class="number-btn" data-number="2">2</button>
+                    <button class="number-btn" data-number="3">3</button>
+                    <button class="number-btn" data-number="4">4</button>
+                    <button class="number-btn" data-number="5">5</button>
+                    <button class="number-btn" data-number="6">6</button>
+                </div>
+                <div class="selected-numbers">
+                    선택한 숫자: <span id="selectedNumbers">없음</span>
+                </div>
+            </div>
+
+            <button id="rollDiceBtn" class="roll-btn" disabled>
+                🎲 주사위 굴리기
+            </button>
+        </div>
+
+        <!-- 장면 2: 주사위 굴리기 애니메이션 -->
+        <div id="scene2" class="scene">
+            <div class="title">
+                <h2>🎲 주사위를 굴리는 중...</h2>
+            </div>
+            
+            <div class="dice-container">
+                <div class="dice" id="animatedDice">
+                    <div class="dice-face front">
+                        <div class="dot"></div>
+                    </div>
+                    <div class="dice-face back">
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div>
+                    <div class="dice-face right">
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div>
+                    <div class="dice-face left">
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div>
+                    <div class="dice-face top">
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div>
+                    <div class="dice-face bottom">
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="loading-text">주사위를 굴리는 중...</div>
+            
+            <!-- 주사위 결과 표시 영역 -->
+            <div class="dice-result" id="diceResultDisplay">
+                <div class="result-dice" id="resultDice">
+                    <!-- 결과 주사위가 여기에 표시됩니다 -->
+                </div>
+                <div class="result-text">결과: 🎲 <span id="resultNumber">-</span>번!</div>
+            </div>
+        </div>
+
+        <!-- 장면 3: 결과 확인 화면 -->
+        <div id="scene3" class="scene">
+            <div id="resultContent">
+                <!-- 성공/실패 내용이 여기에 동적으로 삽입됩니다 -->
+            </div>
+            
+            <!-- 축포 효과 -->
+            <div class="confetti-container" id="confettiContainer"></div>
+            
+            <!-- 실패 효과 이미지 -->
+            <div class="fail-effect" id="failEffect">
+                <img src="ggg.png" alt="실패" class="fail-image">
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 
