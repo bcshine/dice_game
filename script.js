@@ -26,15 +26,19 @@ class DiceGame {
         const number = parseInt(event.target.dataset.number);
         const button = event.target;
 
+        console.log('숫자 선택:', number, '타입:', typeof number);
+
         if (this.selectedNumbers.includes(number)) {
             // 이미 선택된 숫자라면 제거
             this.selectedNumbers = this.selectedNumbers.filter(n => n !== number);
             button.classList.remove('selected');
+            console.log('숫자 제거 후:', this.selectedNumbers);
         } else {
             // 새로운 숫자 선택
             if (this.selectedNumbers.length < 3) {
                 this.selectedNumbers.push(number);
                 button.classList.add('selected');
+                console.log('숫자 추가 후:', this.selectedNumbers);
             }
         }
 
@@ -96,7 +100,20 @@ class DiceGame {
     }
 
     showResult() {
-        const isWin = this.selectedNumbers.includes(this.diceResult);
+        // 안전하게 숫자로 변환해서 비교
+        const diceNumber = parseInt(this.diceResult);
+        const selectedNumbers = this.selectedNumbers.map(n => parseInt(n));
+        const isWin = selectedNumbers.includes(diceNumber);
+        
+        // 디버깅 로그 추가
+        console.log('=== 게임 결과 판정 ===');
+        console.log('원본 선택한 숫자들:', this.selectedNumbers);
+        console.log('변환된 선택한 숫자들:', selectedNumbers);
+        console.log('원본 주사위 결과:', this.diceResult);
+        console.log('변환된 주사위 결과:', diceNumber);
+        console.log('includes 결과:', selectedNumbers.includes(diceNumber));
+        console.log('승리 여부:', isWin);
+        console.log('========================');
         
         // 장면 전환 (주사위 굴리기 → 결과)
         this.switchScene('scene2', 'scene3');
